@@ -1,0 +1,10 @@
+Services/bin/
+Services/obj/
+Model/obj/
+DataAccess/obj/
+APITest/obj/
+DataAccess/bin/
+Model/bin/
+packages/
+APITest/bin/
+.vs/
