@@ -8,3 +8,5 @@ Model/bin/
 packages/
 APITest/bin/
 .vs/
+Common/bin/
+Common/obj/

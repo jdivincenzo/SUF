@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Repositories
 {
-    public abstract class AbstractRepository<TEntity> : IAbstractRepository<TEntity>, IDisposable where TEntity : class
+    public abstract class AbstractRepository<TEntity> : IAbstractRepository<TEntity>, IDisposable where TEntity : class, new()
     {
         #region fields
 
@@ -31,6 +31,14 @@ namespace DataAccess.Repositories
         {
             return context.Set<TEntity>();
         }
+
+        // create instancies and add to context automatically
+        //public TEntity New()
+        //{
+        //    TEntity obj = new TEntity();
+        //    context.Set<TEntity>().Add(obj);
+        //    return obj;
+        //}
 
         #endregion
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccess.Repositories.Interfaces
 {
-    public interface IPictureRepository : IDisposable
+    public interface IPictureRepository : IAbstractRepository<Picture>, IDisposable
     {
     }
 }
