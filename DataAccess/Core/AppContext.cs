@@ -3,6 +3,7 @@ using DataAccess.DatabaseConfig;
 using DataAccess.DatabaseInit;
 using Model.Entities;
 using System;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
@@ -13,6 +14,11 @@ namespace DataAccess.Core
         public AppContext() : base("Name=dbPrueba")
         {
             Database.SetInitializer<AppContext>(new AppDBInitializer());
+        }
+
+        public AppContext(DbConnection connection, DropCreateDatabaseAlways<AppContext> init) : base(connection, contextOwnsConnection: true) // required by Effort.EF6
+        {
+            Database.SetInitializer<AppContext>(init);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -10,3 +10,7 @@ APITest/bin/
 .vs/
 Common/bin/
 Common/obj/
+DataAccessTest/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+DataAccessTest/bin/Debug/netcoreapp3.1/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+DataAccessTest/bin/
+DataAccessTest/obj/
