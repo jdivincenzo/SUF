@@ -1,0 +1,51 @@
+using Model.Entities;
+using NUnit.Framework;
+using Services.PostServices;
+using System.Collections.Generic;
+using Services.PostServices.ExternalModel;
+using System.Linq;
+using System;
+
+namespace ServicesTest.Services.PostServices
+{
+    public class PostServiceTest
+    {
+        private DataAccess.Core.AppContext _context;
+
+        [SetUp]
+        public void Setup()
+        {
+            _context = new DataAccess.Core.AppContext(Effort.DbConnectionFactory.CreateTransient(), new PostServiceInit());
+        }
+
+        #region GetNearby tests
+        [Test]
+        [Ignore("TODO: how to use Effort.EF with sql functions ")]
+        public void GetNearbyCount()
+        {
+            //TODO: how to use Effort.EF with sql functions
+        }
+
+        #endregion
+
+        #region GetPost tests
+        [Test]
+        public void GetPostOk()
+        {
+            var service = new PostService(_context);
+            GetPostReturn res = service.GetPost(new GetPostInvoke { Id = 1 });
+            Assert.NotNull(res);
+        }
+
+        [Test]
+        public void GetPostNotExists()
+        {
+            var service = new PostService(_context);
+            Assert.Throws<Exception>(() =>
+                service.GetPost(new GetPostInvoke { Id = 11227 })
+            );
+        }
+
+        #endregion
+    }
+}

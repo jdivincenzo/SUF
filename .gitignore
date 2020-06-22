@@ -14,3 +14,6 @@ DataAccessTest/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Da
 DataAccessTest/bin/Debug/netcoreapp3.1/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 DataAccessTest/bin/
 DataAccessTest/obj/
+ServicesTest/bin/
+ServicesTest/obj/project.assets.json
+ServicesTest/obj/

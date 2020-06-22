@@ -9,5 +9,6 @@ namespace DataAccess.Repositories.Interfaces
     {
         IEnumerable<TEntity> GetAll();
         //TEntity New();// create instancies and add to context automatically
+        TEntity GetById(int id);
     }
 }

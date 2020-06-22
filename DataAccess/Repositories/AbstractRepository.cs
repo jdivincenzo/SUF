@@ -32,6 +32,11 @@ namespace DataAccess.Repositories
             return context.Set<TEntity>();
         }
 
+        public TEntity GetById(int id)
+        {
+            return context.Set<TEntity>().Find(id);
+        }
+
         // create instancies and add to context automatically
         //public TEntity New()
         //{
