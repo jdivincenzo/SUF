@@ -1,6 +1,7 @@
 ﻿using DataAccess.Core;
 using DataAccess.Repositories;
 using Model.Entities;
+using Services.Common;
 using Services.PostServices.ExternalModel;
 using System;
 using System.Collections;
@@ -10,22 +11,13 @@ using System.Threading;
 
 namespace Services.PostServices
 {
-    public class PostService
+    public class PostService: AbstractService
     {
-        private DataAccess.Core.AppContext _context;
+        #region constructors
+        public PostService() : base() { }
+        public PostService(DataAccess.Core.AppContext context) : base(context) { }
 
-        public PostService() { }
-
-        public PostService(DataAccess.Core.AppContext context)
-        {
-            _context = context;
-        }
-
-        private DataAccess.Core.AppContext NewContext()
-        {
-            if (_context == null) return new DataAccess.Core.AppContext();
-            return _context;
-        }
+        #endregion
 
         public IEnumerable<GetNearbyPostsReturn> GetNearby(GetNearbyPostsInvoke invoke)
         {
