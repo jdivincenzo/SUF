@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
         #region IPostRepository methods
         public IEnumerable<Post> GetNearbyPosts(double lat, double lon, double distance)
         {
-            return context.Set<Post>().Where(p => context.CalculateDistance(lat, lon, p.Lat, p.Lon) <= distance);
+            return context.Set<Post>().Include(p => p.Pictures).Where(p => context.CalculateDistance(lat, lon, p.Lat, p.Lon) <= distance);
         }
 
         #endregion

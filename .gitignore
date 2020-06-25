@@ -17,3 +17,5 @@ DataAccessTest/obj/
 ServicesTest/bin/
 ServicesTest/obj/project.assets.json
 ServicesTest/obj/
+API/obj/
+API/bin/

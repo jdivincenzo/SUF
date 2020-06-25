@@ -41,11 +41,18 @@ namespace ServicesTest.Services.PostServices
         public void GetPostNotExists()
         {
             var service = new PostService(_context);
-            Assert.Throws<Exception>(() =>
-                service.GetPost(new GetPostInvoke { Id = 11227 })
-            );
+            Assert.Throws<Exception>(() => service.GetPost(new GetPostInvoke { Id = 11227 }));
         }
 
+        #endregion
+
+        #region CreatePost test
+        [Test]
+        public void CreatePostWithoutFiles()
+        {
+            var service = new PostService(_context);
+            Assert.Throws<Exception>(() => service.CreatePost(new CreatePostInvoke { Lat = -34.629405, Lon = -58.691752 }));
+        }
         #endregion
     }
 }

@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Services.PostServices
 {
-    public class PostService: AbstractService
+    public class PostService: Services.AbstractService.AbstractService
     {
         #region constructors
         public PostService() : base() { }
@@ -23,11 +23,8 @@ namespace Services.PostServices
         {
             using (var ctx = NewContext())
             {
-                IList<GetNearbyPostsReturn> ret = new List<GetNearbyPostsReturn>();
                 var posts = new PostRepository(ctx).GetNearbyPosts(invoke.Lat, invoke.Lon, invoke.Distance);
-                foreach (var p in posts)
-                    ret.Add(new GetNearbyPostsReturn { Id = p.PostId, Lat = p.Lat, Lon = p.Lon });
-
+                List<GetNearbyPostsReturn> ret = posts.ToList().ConvertAll(x => new GetNearbyPostsReturn(x));
                 return ret;
             }
         }
@@ -36,10 +33,29 @@ namespace Services.PostServices
         {
             using (var ctx = NewContext())
             {
-                List<Post> posts = new PostRepository(ctx).GetAll().ToList();
                 var post = new PostRepository(ctx).GetById(invoke.Id);
                 if (post == null) throw new Exception("Post does not exist.");
-                return new GetPostReturn { Id = post.PostId, Lat = post.Lat, Lon = post.Lon };
+                return new GetPostReturn(post);
+            }
+        }
+
+        public CreatePostReturn CreatePost(CreatePostInvoke invoke)
+        {
+            using (var ctx = NewContext())
+            {
+                if(invoke.Files == null || invoke.Files.Count == 0) throw new Exception("Post does not exist.");
+                List<Picture> pics = new List<Picture>();
+
+                foreach (FileDescriptor f in invoke.Files) 
+                { 
+                    FileUtils.SaveFile(f.Content, f.Filename);
+                    pics.Add(new Picture { FileName = f.Filename, MimeType = f.MimeType });
+                }
+                
+                var post = new Post { Lat = invoke.Lat,Lon = invoke.Lon, Pictures = pics };
+                ctx.Posts.Add(post);
+                ctx.SaveChanges();
+                return new CreatePostReturn(post);
             }
         }
     }

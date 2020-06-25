@@ -9,6 +9,6 @@ namespace Model.Entities
         public int PostId { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
-        public IEnumerable<Picture> Pictures { get; set; }
+        public ICollection<Picture> Pictures { get; set; }
     }
 }

@@ -8,8 +8,7 @@ namespace Model.Entities
     {
         public int PictureId { get; set; }
         public string FileName { get; set; }
-        public string ContentType { get; set; }
-        public byte[] Content { get; set; }
+        public string MimeType { get; set; }
         public Post Post { get; set; }
     }
 }
