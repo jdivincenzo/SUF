@@ -16,6 +16,7 @@ namespace Services.PostServices
         #region constructors
         public PostService() : base() { }
         public PostService(DataAccess.Core.AppContext context) : base(context) { }
+        public PostService(DataAccess.Core.AppContext context, IFileUtils fileUtils) : base(context, fileUtils) { }
 
         #endregion
 
@@ -43,16 +44,16 @@ namespace Services.PostServices
         {
             using (var ctx = NewContext())
             {
-                if(invoke.Files == null || invoke.Files.Count == 0) throw new Exception("Post does not exist.");
+                if(invoke.Files == null || invoke.Files.Count == 0) throw new Exception("Post does not have pictures.");
                 List<Picture> pics = new List<Picture>();
 
                 foreach (FileDescriptor f in invoke.Files) 
-                { 
-                    FileUtils.SaveFile(f.Content, f.Filename);
+                {
+                    GetFileUtils().SaveFile(f.Content, f.Filename);
                     pics.Add(new Picture { FileName = f.Filename, MimeType = f.MimeType });
                 }
                 
-                var post = new Post { Lat = invoke.Lat,Lon = invoke.Lon, Pictures = pics };
+                var post = new Post { Lat = invoke.Lat, Lon = invoke.Lon, Pictures = pics };
                 ctx.Posts.Add(post);
                 ctx.SaveChanges();
                 return new CreatePostReturn(post);
