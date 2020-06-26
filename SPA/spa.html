@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>OpenLayers Demo</title>
+    <style type="text/css">
+      html, body, #postsMap {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+      }
+    </style>
+    <script src="OpenLayers-2.13.1/OpenLayers.js"></script>
+    <script src="jQuery/jquery-3.5.1.js"></script>
+    <script>
+	    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+	    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+		var map = null;
+	    var latIni = -34.630744;
+	    var lonIni = -58.692811;
+	    var positionIni = new OpenLayers.LonLat(lonIni, latIni).transform(fromProjection, toProjection);
+
+      function init() {
+	    var zoom = 16;
+	    map = new OpenLayers.Map("postsMap");
+	    var mapnik = new OpenLayers.Layer.OSM();
+
+	    map.addLayer(mapnik);
+	    map.setCenter(positionIni, zoom);
+      }
+    </script>
+  </head>
+  <body onload="init();">
+  	<input type="button" value="o" onclick="consultar()"></input>
+    <div id="postsMap"></div>
+    <script>
+    	function consultar() {
+	  		var api_url = 'https://localhost:44310/api/post/GetNearbyPosts?lat=-34.629835&lon=-58.694141&dist=10'
+	    	$.ajax({
+	        	url: api_url,
+	        	contentType: "application/json",
+	        	dataType: 'json',
+	        	success: function(markers){
+	           		addMarkers(markers);
+	        	}
+	    	})
+		}
+
+		function addMarkers(markers){
+			console.log(markers);
+			var markersLayer = new OpenLayers.Layer.Markers("Markers");
+
+			for (var i = 0; i < markers.length; i++)
+				cargar(markers[i].id, markers[i].lat, markers[i].lon, markersLayer);
+
+      		map.addLayer(markersLayer);
+      		//marco ubicacion actual
+    		var styleArray = [new OpenLayers.StyleMap({ pointRadius: 6, fillColor: "blue", fillOpacity: 0.5 })];
+    		var vectorLayer = [new OpenLayers.Layer.Vector('CurrentLocation', { styleMap: styleArray[0] })];
+    		var feature = new OpenLayers.Feature.Vector(
+        	new OpenLayers.Geometry.Point(lonIni, latIni).transform(fromProjection, toProjection),
+        		{ description: "marker number 0" }
+      		);
+      		vectorLayer[0].addFeatures(feature);
+      		map.addLayer(vectorLayer[0]);
+		}
+
+        function cargar(id, lat, lon, markersLayer) {
+        	var markerpos = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
+    	    var marker = new OpenLayers.Marker(markerpos);
+    	    marker.icon.imageDiv.firstChild.setAttribute('src', 'https://sitna.tracasa.es/api/jornadassiglibre2015/img/marker.png');
+	        markersLayer.addMarker(marker);
+        }
+	</script>
+  </body>
+</html>

@@ -19,3 +19,6 @@ ServicesTest/obj/project.assets.json
 ServicesTest/obj/
 API/obj/
 API/bin/
+SPA/jQuery/
+SPA/OpenLayers-2.13.1/.gitignore
+SPA/OpenLayers-2.13.1/
