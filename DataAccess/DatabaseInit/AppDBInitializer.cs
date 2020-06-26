@@ -5,10 +5,10 @@ using System.Data.Entity;
 
 namespace DataAccess.DatabaseInit
 {
-    //public class AppDBInitializer : CreateDatabaseIfNotExists<AppContext> 
-    public class AppDBInitializer : DropCreateDatabaseAlways<AppContext>
+    //public class AppDBInitializer : CreateDatabaseIfNotExists<BaseContext> 
+    public class AppDBInitializer : DropCreateDatabaseAlways<BaseContext>
     {
-        protected override void Seed(AppContext context)
+        protected override void Seed(BaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.631298,Lon=-58.695334 };

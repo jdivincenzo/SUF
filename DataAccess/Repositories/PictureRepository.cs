@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
     public class PictureRepository : AbstractRepository<Picture>, IPictureRepository, IDisposable
     {
         #region Constructores
-        public PictureRepository(Core.AppContext context) : base(context) { }
+        public PictureRepository(Core.BaseContext context) : base(context) { }
 
         #endregion
     }

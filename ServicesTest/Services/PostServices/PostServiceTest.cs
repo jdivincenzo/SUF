@@ -10,12 +10,12 @@ namespace ServicesTest.Services.PostServices
 {
     public class PostServiceTest
     {
-        private DataAccess.Core.AppContext _context;
+        private DataAccess.Core.BaseContext _context;
 
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.AppContext(Effort.DbConnectionFactory.CreateTransient(), new PostServiceInit());
+            _context = new DataAccess.Core.BaseContext(Effort.DbConnectionFactory.CreateTransient(), new PostServiceInit());
         }
 
         #region GetNearby tests

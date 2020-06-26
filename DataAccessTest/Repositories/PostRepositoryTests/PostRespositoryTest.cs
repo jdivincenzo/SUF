@@ -9,12 +9,12 @@ namespace DataAccessTest.Repositories.PostRepositoryTests
 {
     public class AbstractRespositoryTest
     {
-        private DataAccess.Core.AppContext _context;
+        private DataAccess.Core.BaseContext _context;
 
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.AppContext(Effort.DbConnectionFactory.CreateTransient(), new PostRepositoryInit());
+            _context = new DataAccess.Core.BaseContext(Effort.DbConnectionFactory.CreateTransient(), new PostRepositoryInit());
         }
 
         #region GetNearbyPosts tests

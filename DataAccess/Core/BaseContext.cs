@@ -9,16 +9,16 @@ using System.Data.Entity.Infrastructure;
 
 namespace DataAccess.Core
 {
-    public class AppContext : DbContext
+    public class BaseContext : DbContext
     {
-        public AppContext() : base("Name=dbPrueba")
+        public BaseContext() : base("Name=dbPrueba")
         {
-            Database.SetInitializer<AppContext>(new AppDBInitializer());
+            Database.SetInitializer<BaseContext>(new AppDBInitializer());
         }
 
-        public AppContext(DbConnection connection, DropCreateDatabaseAlways<AppContext> init) : base(connection, contextOwnsConnection: true) // required by Effort.EF6
+        public BaseContext(DbConnection connection, DropCreateDatabaseAlways<BaseContext> init) : base(connection, contextOwnsConnection: true) // required by Effort.EF6
         {
-            Database.SetInitializer<AppContext>(init);
+            Database.SetInitializer<BaseContext>(init);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

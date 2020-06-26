@@ -9,12 +9,12 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
 {
     public class AbstractRespositoryTest
     {
-        private DataAccess.Core.AppContext _context;
+        private DataAccess.Core.BaseContext _context;
 
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.AppContext(Effort.DbConnectionFactory.CreateTransient(), new AbstractRepositoryInit());
+            _context = new DataAccess.Core.BaseContext(Effort.DbConnectionFactory.CreateTransient(), new AbstractRepositoryInit());
         }
 
         #region GatAll tests

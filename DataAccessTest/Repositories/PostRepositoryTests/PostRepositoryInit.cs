@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace DataAccessTest.Repositories.PostRepositoryTests
 { 
-    public class PostRepositoryInit : DropCreateDatabaseAlways<AppContext>
+    public class PostRepositoryInit : DropCreateDatabaseAlways<BaseContext>
     {
-        protected override void Seed(AppContext context)
+        protected override void Seed(BaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.629405, Lon=-58.691752 };
