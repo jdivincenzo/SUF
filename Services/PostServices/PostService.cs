@@ -15,8 +15,8 @@ namespace Services.PostServices
     {
         #region constructors
         public PostService() : base() { }
-        public PostService(DataAccess.Core.BaseContext context) : base(context) { }
-        public PostService(DataAccess.Core.BaseContext context, IFileUtils fileUtils) : base(context, fileUtils) { }
+        public PostService(DataAccess.Core.DevContext context) : base(context) { }
+        public PostService(DataAccess.Core.DevContext context, IFileUtils fileUtils) : base(context, fileUtils) { }
 
         #endregion
 

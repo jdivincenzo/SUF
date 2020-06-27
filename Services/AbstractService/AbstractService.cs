@@ -7,7 +7,7 @@ namespace Services.AbstractService
 {
     public class AbstractService
     {
-        private DataAccess.Core.BaseContext _context;
+        private DataAccess.Core.DevContext _context;
         private IFileUtils _fileUtils;
 
         public AbstractService() 
@@ -15,20 +15,20 @@ namespace Services.AbstractService
             _fileUtils = new FileUtils();
         }
 
-        public AbstractService(DataAccess.Core.BaseContext context, IFileUtils fileUtils)
+        public AbstractService(DataAccess.Core.DevContext context, IFileUtils fileUtils)
         {
             _context = context;
             _fileUtils = fileUtils;
         }
 
-        public AbstractService(DataAccess.Core.BaseContext context)
+        public AbstractService(DataAccess.Core.DevContext context)
         {
             _context = context;
         }
 
-        internal DataAccess.Core.BaseContext NewContext()
+        internal DataAccess.Core.DevContext NewContext()
         {
-            if (_context == null) return new DataAccess.Core.BaseContext();
+            if (_context == null) return new DataAccess.Core.DevContext();
             return _context;
         }
 

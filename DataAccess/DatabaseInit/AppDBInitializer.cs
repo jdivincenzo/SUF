@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace DataAccess.DatabaseInit
 {
-    public class AppDBInitializer : DropCreateDatabaseAlways<BaseContext>
+    public class AppDBInitializer : DropCreateDatabaseAlways<DevContext>
     {
-        protected override void Seed(BaseContext context)
+        protected override void Seed(DevContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.631298,Lon=-58.695334 };

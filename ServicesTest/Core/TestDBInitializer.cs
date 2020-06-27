@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace ServicesTest.Core
 {
-    public class TestDBInitializer : DropCreateDatabaseAlways<BaseContext>
+    public class TestDBInitializer : DropCreateDatabaseAlways<DevContext>
     {
-        protected override void Seed(BaseContext context)
+        protected override void Seed(DevContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.631298,Lon=-58.695334 };

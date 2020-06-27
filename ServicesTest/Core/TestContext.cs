@@ -10,7 +10,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace ServicesTest.Core
 {
-    public class TestContext : BaseContext
+    public class TestContext : DevContext
     {
         public TestContext() : base(Effort.DbConnectionFactory.CreateTransient(), new TestDBInitializer())
         {

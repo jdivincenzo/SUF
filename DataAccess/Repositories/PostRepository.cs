@@ -14,7 +14,7 @@ namespace DataAccess.Repositories
     public class PostRepository : AbstractRepository<Post>, IPostRepository, IDisposable
     {
         #region Constructores
-        public PostRepository(Core.BaseContext context) : base(context) { }
+        public PostRepository(Core.DevContext context) : base(context) { }
 
         #endregion
 
