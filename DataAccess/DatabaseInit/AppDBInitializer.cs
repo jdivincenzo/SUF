@@ -5,7 +5,6 @@ using System.Data.Entity;
 
 namespace DataAccess.DatabaseInit
 {
-    //public class AppDBInitializer : CreateDatabaseIfNotExists<BaseContext> 
     public class AppDBInitializer : DropCreateDatabaseAlways<BaseContext>
     {
         protected override void Seed(BaseContext context)
@@ -14,7 +13,6 @@ namespace DataAccess.DatabaseInit
             Post post1 = new Post() { Lat = -34.631298,Lon=-58.695334 };
             Post post2 = new Post() { Lat = -34.632455,Lon=-58.696286 };
             Post post3 = new Post() { Lat = -34.633683, Lon=-58.697299 };
-
 
             posts.Add(post1);
             posts.Add(post2);
