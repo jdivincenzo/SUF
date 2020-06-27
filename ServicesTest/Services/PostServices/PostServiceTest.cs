@@ -14,11 +14,14 @@ namespace ServicesTest.Services.PostServices
     {
         private Core.TestContext _context;
 
+        #region config
         [SetUp]
         public void Setup()
         {
             _context = new Core.TestContext();
         }
+
+        #endregion
 
         [TearDown]
         public void TearDown()
