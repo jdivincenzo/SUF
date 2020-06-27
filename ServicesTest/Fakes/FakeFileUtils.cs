@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ServicesTest.NewFolder
+namespace ServicesTest.Fakes
 {
     public class FakeFileUtils : IFileUtils
     {

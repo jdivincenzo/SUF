@@ -5,17 +5,25 @@ using System.Collections.Generic;
 using Services.PostServices.ExternalModel;
 using System.Linq;
 using System;
+using ServicesTest.Core;
+using ServicesTest.Fakes;
 
 namespace ServicesTest.Services.PostServices
 {
     public class PostServiceTest
     {
-        private DataAccess.Core.BaseContext _context;
+        private Core.TestContext _context;
 
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.BaseContext(Effort.DbConnectionFactory.CreateTransient(), new PostServiceInit());
+            _context = new Core.TestContext();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _context.DisposeContext();
         }
 
         #region GetNearby tests
@@ -52,6 +60,16 @@ namespace ServicesTest.Services.PostServices
         {
             var service = new PostService(_context);
             Assert.Throws<Exception>(() => service.CreatePost(new CreatePostInvoke { Lat = -34.629405, Lon = -58.691752 }));
+        }
+
+        [Test]
+        public void CreatePostOk()
+        {
+            var service = new PostService(_context, new FakeFileUtils());
+            var prevCount = _context.Posts.Count();
+            service.CreatePost(new CreatePostInvoke { Lat = -34.629405, Lon = -58.691752, Files = new List<FileDescriptor> { new FileDescriptor { Filename = "" } } });
+            var postCount = _context.Posts.Count();
+            Assert.IsTrue(prevCount + 1 == postCount);
         }
         #endregion
     }

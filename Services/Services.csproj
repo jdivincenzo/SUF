@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    <Folder Include="PictureServices\ExternalModel\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PictureServices\ExternalModel\" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
