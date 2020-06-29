@@ -1,4 +1,5 @@
-﻿using System;
+﻿using API.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,11 +33,11 @@ namespace API.Controllers
         [HttpPost]
         public async Task CreatePost([FromForm] double lat, [FromForm] double lon, [FromForm] IFormFile[] files)
         {
-            List<FileDescriptor> filesDescriptors = new List<FileDescriptor>();
-            foreach (IFormFile f in files)
-                filesDescriptors.Add( new FileDescriptor { Content = f.OpenReadStream(), Filename = f.FileName, MimeType = f.ContentType } );
-
-            await Task.Run(() => new PostService().CreatePost(new CreatePostInvoke { Lat = lat, Lon = lon, Files = filesDescriptors }));
+            await Task.Run(() => new PostService().CreatePost(new CreatePostInvoke {
+                Lat = lat, 
+                Lon = lon, 
+                Files = new FileUtils().GetDescriptors(files) 
+            }));
         }
     }
 }
