@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -14,8 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Model\Model.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Services\Services.csproj" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

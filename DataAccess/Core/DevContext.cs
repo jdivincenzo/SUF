@@ -13,7 +13,7 @@ namespace DataAccess.Core
     {
         public DevContext() : base("Name=dbPrueba")
         {
-            Database.SetInitializer<DevContext>(new AppDBInitializer());
+            Database.SetInitializer<DevContext>(new DevDBInitializer());
         }
 
         public DevContext(DbConnection connection, DropCreateDatabaseAlways<DevContext> init) : base(connection, contextOwnsConnection: true) // required by Effort.EF6

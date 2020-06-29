@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace DataAccess.DatabaseInit
 {
-    public class AppDBInitializer : DropCreateDatabaseAlways<DevContext>
+    public class DevDBInitializer : DropCreateDatabaseAlways<DevContext>
     {
         protected override void Seed(DevContext context)
         {
