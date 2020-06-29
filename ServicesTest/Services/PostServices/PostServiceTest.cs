@@ -70,10 +70,16 @@ namespace ServicesTest.Services.PostServices
         {
             var service = new PostService(_context, new FakeFileUtils());
             var prevCount = _context.Posts.Count();
-            service.CreatePost(new CreatePostInvoke { Lat = -34.629405, Lon = -58.691752, Files = new List<FileDescriptor> { new FileDescriptor { Filename = "" } } });
+            var lat = -34.629405;
+            var lon = -58.691752;
+            CreatePostReturn cpr = service.CreatePost(new CreatePostInvoke { Lat = lat, Lon = lon, Files = new List<FileDescriptor> { new FileDescriptor { Filename = "" } } });
             var postCount = _context.Posts.Count();
             Assert.IsTrue(prevCount + 1 == postCount);
+            Assert.IsTrue(lat == cpr.Lat);
+            Assert.IsTrue(lon == cpr.Lon);
+            Assert.IsNotNull(cpr.Id);
         }
+
         #endregion
     }
 }
