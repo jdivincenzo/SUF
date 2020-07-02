@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace DataAccessTest.Repositories.PostRepositoryTests
 { 
-    public class PostRepositoryInit : DropCreateDatabaseAlways<DevContext>
+    public class PostRepositorySeeder : ISeeder
     {
-        protected override void Seed(DevContext context)
+        public void Seed(DevContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.629405, Lon=-58.691752 };
@@ -23,7 +23,7 @@ namespace DataAccessTest.Repositories.PostRepositoryTests
             pictures.Add(new Picture() { FileName = "Foto 3", Post = post2 });
             context.Pictures.AddRange(pictures);
 
-            base.Seed(context);
+            context.SaveChanges();
         }
     }
 }

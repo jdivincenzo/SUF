@@ -14,7 +14,8 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.DevContext(Effort.DbConnectionFactory.CreateTransient(), new BaseRepositoryInit());
+            _context = new DataAccess.Core.DevContext(new BaseRepositorySeeder());
+            new SeedRepository(_context).Seed(); //TODO: Automatizar
         }
 
         #region GatAll tests

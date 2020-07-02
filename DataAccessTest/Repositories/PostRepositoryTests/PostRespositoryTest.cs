@@ -14,15 +14,20 @@ namespace DataAccessTest.Repositories.PostRepositoryTests
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.DevContext(Effort.DbConnectionFactory.CreateTransient(), new PostRepositoryInit());
+            _context = new DataAccess.Core.DevContext(new PostRepositorySeeder());
+            new SeedRepository(_context).Seed();//TODO: Automatizar
         }
 
         #region GetNearbyPosts tests
         [Test]
-        [Ignore("TODO: how to use Effort.EF with sql functions ")]
         public void GetNearbyPosts()
         {
-            //TODO: how to use Effort.EF with sql functions 
+            IEnumerable<Post> posts = new PostRepository(_context).GetNearbyPosts(-34.629835, -58.694141, 1); 
+            Assert.IsTrue(posts.Count() == 0);
+            posts = new PostRepository(_context).GetNearbyPosts(-34.629835, -58.694141, 2); 
+            Assert.IsTrue(posts.Count() == 1);
+            posts = new PostRepository(_context).GetNearbyPosts(-34.629835, -58.694141, 10); 
+            Assert.IsTrue(posts.Count() == 2);
         }
 
         #endregion

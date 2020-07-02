@@ -1,4 +1,5 @@
-﻿using Services.Common;
+﻿using DataAccess.Core;
+using Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,7 +29,7 @@ namespace Services.AbstractService
 
         internal DataAccess.Core.DevContext NewContext()
         {
-            if (_context == null) return new DataAccess.Core.DevContext();
+            if (_context == null) return new DataAccess.Core.DevContext(new DevSeeder());
             return _context;
         }
 
