@@ -14,20 +14,20 @@ namespace ServicesTest.Services.PostServices
     {
         private Core.TestContext _context;
 
-        #region config
+        #region Config
         [SetUp]
         public void Setup()
         {
             _context = new Core.TestContext();
         }
 
-        #endregion
-
         [TearDown]
         public void TearDown()
         {
             _context.DisposeContext();
         }
+
+        #endregion
 
         #region GetNearby tests
         [Test]
@@ -69,12 +69,24 @@ namespace ServicesTest.Services.PostServices
         public void CreatePostOk()
         {
             var service = new PostService(_context, new FakeFileUtils());
-            var prevCount = _context.Posts.Count();
+            var prevPostCount = _context.Posts.Count();
+            var prevPicCount = _context.Pictures.Count();
             var lat = -34.629405;
             var lon = -58.691752;
-            CreatePostReturn cpr = service.CreatePost(new CreatePostInvoke { Lat = lat, Lon = lon, Files = new List<FileDescriptor> { new FileDescriptor { Filename = "" } } });
+
+            CreatePostReturn cpr = service.CreatePost(new CreatePostInvoke {
+                Lat = lat, 
+                Lon = lon, 
+                Files = new List<FileDescriptor> { 
+                    new FileDescriptor { Filename = "fakeFile1" }, 
+                    new FileDescriptor { Filename = "fakeFile1" } 
+                } 
+            });
             var postCount = _context.Posts.Count();
-            Assert.IsTrue(prevCount + 1 == postCount);
+            var picCount = _context.Pictures.Count();
+
+            Assert.IsTrue(prevPostCount + 1 == postCount);
+            Assert.IsTrue(prevPicCount + 2 == picCount);
             Assert.IsTrue(lat == cpr.Lat);
             Assert.IsTrue(lon == cpr.Lon);
             Assert.IsNotNull(cpr.Id);

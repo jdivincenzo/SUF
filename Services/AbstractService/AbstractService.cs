@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Services.AbstractService
 {
-    public class AbstractService
+    public abstract class AbstractService
     {
         private DataAccess.Core.DevContext _context;
         private IFileUtils _fileUtils;

@@ -8,19 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services.PostServices;
 using Services.PostServices.ExternalModel;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostController : ControllerBase
+    public class PostController : AbstractController<PostController>
     {
-        private readonly ILogger<PostController> _logger;
-
-        public PostController(ILogger<PostController> logger)
-        {
-            _logger = logger;
-        }
+        public PostController(ILogger<PostController> logger): base(logger){ }
 
         [Route("GetNearbyPosts")]
         [HttpGet]
@@ -33,11 +30,18 @@ namespace API.Controllers
         [HttpPost]
         public async Task CreatePost([FromForm] double lat, [FromForm] double lon, [FromForm] IFormFile[] files)
         {
-            await Task.Run(() => new PostService().CreatePost(new CreatePostInvoke {
-                Lat = lat, 
-                Lon = lon, 
-                Files = new FileUtils().GetDescriptors(files) 
-            }));
+            LogRequest(Request, HttpContext.TraceIdentifier, lat, lon, files.Select(x=> x.FileName).ToArray<object>());
+            await Task.Run(() =>
+            {
+                var ret = new PostService().CreatePost(new CreatePostInvoke
+                {
+                    Lat = lat,
+                    Lon = lon,
+                    Files = new FileUtils().GetDescriptors(files)
+                });
+                LogResponse(JsonSerializer.Serialize(ret), HttpContext.TraceIdentifier);
+                return ret;
+            });
         }
     }
 }

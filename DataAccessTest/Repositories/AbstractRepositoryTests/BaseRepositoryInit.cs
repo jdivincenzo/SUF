@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace DataAccessTest.Repositories.AbstractRepositoryTests
 { 
-    public class AbstractRepositoryInit : DropCreateDatabaseAlways<DevContext>
+    public class BaseRepositoryInit : DropCreateDatabaseAlways<DevContext>
     {
         protected override void Seed(DevContext context)
         {
