@@ -3,11 +3,11 @@ using Model.Entities;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace DataAccessTest.Repositories.PostRepositoryTests
+namespace DataAccessTest.Repositories.AbstractRepositoryTests
 { 
-    public class PostRepositorySeeder : ISeeder
+    public class BaseRepositorySeeder : ISeeder
     {
-        public void Seed(DevContext context)
+        public void Seed(BaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.629405, Lon=-58.691752 };

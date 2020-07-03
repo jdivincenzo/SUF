@@ -9,12 +9,12 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
 {
     public class AbstractRespositoryTest
     {
-        private DataAccess.Core.DevContext _context;
+        private DataAccess.Core.BaseContext _context;
 
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccess.Core.DevContext(new BaseRepositorySeeder());
+            _context = new TestContext(new BaseRepositorySeeder());
             new SeedRepository(_context).Seed(); //TODO: Automatizar
         }
 

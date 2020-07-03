@@ -14,7 +14,7 @@ namespace DataAccess.Repositories
     public class SeedRepository : AbstractRepository<Post>, IDisposable
     {
         #region Constructores
-        public SeedRepository(Core.DevContext context) : base(context) { }
+        public SeedRepository(Core.BaseContext context) : base(context) { }
 
         #endregion
 

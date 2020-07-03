@@ -15,8 +15,8 @@ namespace Services.Seed
     {
         #region constructors
         public SeedService() : base() { }
-        public SeedService(DataAccess.Core.DevContext context) : base(context) { }
-        public SeedService(DataAccess.Core.DevContext context, IFileUtils fileUtils) : base(context, fileUtils) { }
+        public SeedService(DataAccess.Core.BaseContext context) : base(context) { }
+        public SeedService(DataAccess.Core.BaseContext context, IFileUtils fileUtils) : base(context, fileUtils) { }
 
         #endregion
 

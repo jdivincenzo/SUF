@@ -1,18 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Model.Entities;
+﻿using DataAccess.Core;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Data.Common;
+using System.Collections.Generic;
+using System.Text;
 
-namespace DataAccess.Core
+namespace DataAccessTest
 {
-    public class DevContext : BaseContext
+    public class TestContext : BaseContext
     {
-        public DevContext() : base()
+        public TestContext() : base()
         {
             this.Database.EnsureCreated();
         }
 
-        public DevContext(ISeeder seeder) : base(seeder)
+        public TestContext(ISeeder seeder) : base(seeder)
         {
             this.Database.EnsureCreated();
         }

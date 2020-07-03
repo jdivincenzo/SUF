@@ -12,13 +12,13 @@ namespace DataAccess.Repositories
     {
         #region fields
 
-        internal Core.DevContext context;
+        internal Core.BaseContext context;
         private bool disposed = false;
 
         #endregion
 
         #region Constructors
-        public AbstractRepository(Core.DevContext context)
+        public AbstractRepository(Core.BaseContext context)
         {
             this.context = context;
         }

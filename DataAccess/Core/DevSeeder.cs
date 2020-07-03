@@ -8,7 +8,7 @@ namespace DataAccess.Core
 {
     public class DevSeeder: ISeeder
     {
-        public void Seed(DevContext context)
+        public void Seed(BaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.631298, Lon = -58.695334 };

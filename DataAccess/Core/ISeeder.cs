@@ -4,6 +4,6 @@ namespace DataAccess.Core
 {
     public interface ISeeder
     {
-        public void Seed(DevContext ctx);
+        public void Seed(BaseContext ctx);
     }
 }
