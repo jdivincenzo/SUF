@@ -23,20 +23,28 @@ namespace ServicesTest.Services.PostServices
             new SeedService(_context).Seed();//TODO: Automatizar
         }
 
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    _context.DisposeContext();
-        //}
+        [TearDown]
+        public void TearDown()
+        {
+            _context.DisposeContext();
+        }
 
         #endregion
 
         #region GetNearby tests
         [Test]
-        [Ignore("TODO: how to use Effort.EF with sql functions ")]
         public void GetNearbyCount()
         {
-            //TODO: how to use Effort.EF with sql functions
+            GetNearbyPostsInvoke inv1 = new GetNearbyPostsInvoke { Lat = -34.629835, Lon = -58.694141, Distance = 1 };
+            GetNearbyPostsInvoke inv2 = new GetNearbyPostsInvoke { Lat = -34.629835, Lon = -58.694141, Distance = 2 };
+            GetNearbyPostsInvoke inv3 = new GetNearbyPostsInvoke { Lat = -34.629835, Lon = -58.694141, Distance = 10 };
+
+            IEnumerable<GetNearbyPostsReturn> posts1 = new PostService(_context).GetNearby(inv1);
+            Assert.IsTrue(posts1.Count() == 0);
+            IEnumerable<GetNearbyPostsReturn> posts2 = new PostService(_context).GetNearby(inv2);
+            Assert.IsTrue(posts2.Count() == 1);
+            IEnumerable<GetNearbyPostsReturn> posts3 = new PostService(_context).GetNearby(inv3);
+            Assert.IsTrue(posts3.Count() == 2);
         }
 
         #endregion
@@ -46,7 +54,8 @@ namespace ServicesTest.Services.PostServices
         public void GetPostOk()
         {
             var service = new PostService(_context);
-            GetPostReturn res = service.GetPost(new GetPostInvoke { Id = 1 });
+            
+            GetPostReturn res = service.GetPost(new GetPostInvoke { Id = _context.Posts.First().PostId });
             Assert.NotNull(res);
         }
 

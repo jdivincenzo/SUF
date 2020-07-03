@@ -31,6 +31,11 @@ namespace DataAccess.Core
             _seeder.Seed(this);
         }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
+
         //This method is for in-memory testing. Dev/prod use db function
         [DbFunction("CalculateDistance")]
         public static double CalculateDistance(double Lat1, double Lon1, double Lat2, double Lon2)

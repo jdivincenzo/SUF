@@ -12,5 +12,12 @@ namespace ServicesTest.Core
         {
             this.Database.EnsureCreated();
         }
+        public override void Dispose() // Override to avoid tested project to dispose the conext
+        {
+        }
+        public void DisposeContext()    // For mannually dispose on 
+        {
+            base.Dispose();
+        }
     }
 }
