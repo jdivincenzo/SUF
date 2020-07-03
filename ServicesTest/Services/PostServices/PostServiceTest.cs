@@ -7,25 +7,27 @@ using System.Linq;
 using System;
 using ServicesTest.Core;
 using ServicesTest.Fakes;
+using Services.Seed;
 
 namespace ServicesTest.Services.PostServices
 {
     public class PostServiceTest
     {
-        private Core.TestContext _context;
+        private ServiceTestContext _context;
 
         #region Config
         [SetUp]
         public void Setup()
         {
-            _context = new Core.TestContext();
+            _context = new ServiceTestContext(new PostServiceSeeder());
+            new SeedService(_context).Seed();//TODO: Automatizar
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            _context.DisposeContext();
-        }
+        //[TearDown]
+        //public void TearDown()
+        //{
+        //    _context.DisposeContext();
+        //}
 
         #endregion
 

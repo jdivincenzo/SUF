@@ -1,4 +1,5 @@
 using DataAccess.Repositories;
+using DataAccessTest.Core;
 using Model.Entities;
 using NUnit.Framework;
 using System;
@@ -14,7 +15,7 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
         [SetUp]
         public void Setup()
         {
-            _context = new TestContext(new BaseRepositorySeeder());
+            _context = new DataAccessTestContext(new BaseRepositorySeeder());
             new SeedRepository(_context).Seed(); //TODO: Automatizar
         }
 
