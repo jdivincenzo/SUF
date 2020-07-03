@@ -8,18 +8,9 @@ namespace DataAccessTest
 {
     public class TestContext : BaseContext
     {
-        public TestContext() : base()
+        public TestContext(ISeeder seeder) : base(new DbContextOptionsBuilder<TestContext>().UseInMemoryDatabase(databaseName: "Test").Options, seeder)
         {
             this.Database.EnsureCreated();
-        }
-
-        public TestContext(ISeeder seeder) : base(seeder)
-        {
-            this.Database.EnsureCreated();
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=localhost\sqlexpress;Database=Dev;Integrated Security=True");
         }
     }
 }
