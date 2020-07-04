@@ -28,7 +28,7 @@ namespace Services.PostServices
         public GetPostReturn GetPost(GetPostInvoke invoke)
         {
             using var ctx = NewContext();
-            var post = new PostRepository(ctx).GetById(invoke.Id);
+            var post = new PostRepository(ctx).Get(invoke.Id);
             if (post == null) throw new Exception("Post does not exist.");
             return new GetPostReturn(post);
         }
@@ -41,8 +41,8 @@ namespace Services.PostServices
 
             foreach (FileDescriptor f in invoke.Files)
             {
-                GetFileUtils().SaveFile(f.Content, f.Filename);
-                pics.Add(new Picture { FileName = f.Filename, MimeType = f.MimeType });
+                string newFilename = GetFileUtils().SaveFile(f.Content, f.Filename);
+                pics.Add(new Picture { FileName = newFilename, MimeType = f.MimeType });
             }
 
             var post = new Post { Lat = invoke.Lat, Lon = invoke.Lon, Pictures = pics };

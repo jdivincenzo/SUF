@@ -92,12 +92,14 @@ namespace ServicesTest.Services.PostServices
             });
             var postCount = _context.Posts.Count();
             var picCount = _context.Pictures.Count();
+            var newPost = new PostService(_context).GetPost(new GetPostInvoke { Id = cpr.Id });
 
-            Assert.IsTrue(prevPostCount + 1 == postCount);
+            Assert.IsTrue(prevPostCount + 1 == postCount); 
             Assert.IsTrue(prevPicCount + 2 == picCount);
             Assert.IsTrue(lat == cpr.Lat);
             Assert.IsTrue(lon == cpr.Lon);
             Assert.IsNotNull(cpr.Id);
+            Assert.IsTrue(newPost.Pictures.Count() == 2);
         }
 
         #endregion

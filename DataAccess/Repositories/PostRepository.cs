@@ -22,6 +22,11 @@ namespace DataAccess.Repositories
             return context.Posts.Include(p=>p.Pictures).Where(p =>BaseContext.CalculateDistance(lat, lon, p.Lat, p.Lon) <= distance);
         }
 
+        public Post Get(int id)
+        {
+            return context.Posts.Include(p => p.Pictures).Where(p => p.PostId == id).FirstOrDefault();
+        }
+
         #endregion
     }
 }

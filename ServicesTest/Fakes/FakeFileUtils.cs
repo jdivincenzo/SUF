@@ -5,6 +5,6 @@ namespace ServicesTest.Fakes
 {
     public class FakeFileUtils : IFileUtils
     {
-        public void SaveFile(Stream stream, string fileName) { }
+        public string SaveFile(Stream stream, string fileName) { return "GuidFilename"; }
     }
 }

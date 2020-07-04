@@ -4,6 +4,6 @@ namespace Services.Common
 {
     public interface IFileUtils
     {
-        void SaveFile(Stream stream, string fileName);
+        string SaveFile(Stream stream, string fileName);
     }
 }

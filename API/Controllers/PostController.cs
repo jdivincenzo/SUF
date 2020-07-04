@@ -41,5 +41,12 @@ namespace API.Controllers
                 return ret;
             });
         }
+
+        [Route("GetPost")]
+        [HttpGet]
+        public GetPostReturn GetPost(int id)
+        {
+            return new PostService().GetPost(new GetPostInvoke { Id = id });
+        }
     }
 }
