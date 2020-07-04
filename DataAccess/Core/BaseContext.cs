@@ -6,23 +6,35 @@ namespace DataAccess.Core
 {
     public class BaseContext : DbContext
     {
-        private readonly ISeeder _seeder;
+        private bool _seeded = false;
 
         public BaseContext(ISeeder seeder) : base()
         {
             this.Database.EnsureCreated();
-            _seeder = seeder;
+            this.Seed(seeder);
         }
 
         public BaseContext(DbContextOptions options, ISeeder seeder) : base(options)
         {
             this.Database.EnsureCreated();
-            _seeder = seeder;
+            this.Seed(seeder);
         }
 
-        public void Seed()
+        public void Seed(ISeeder seeder)
         {
-            _seeder.Seed(this);
+            if (!_seeded && seeder.Transient())
+            {
+                CleanContext();
+                seeder.Seed(this);
+                _seeded = true;
+            }
+        }
+
+        public void CleanContext()
+        {
+            this.Posts.RemoveRange(this.Posts);
+            this.Pictures.RemoveRange(this.Pictures);
+            this.SaveChanges();
         }
 
         public override void Dispose()

@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using Services.PostServices;
 using Services.PostServices.ExternalModel;
-using Services.Seed;
 using ServicesTest.Core;
 using ServicesTest.Fakes;
 using System;
@@ -18,8 +17,7 @@ namespace ServicesTest.Services.PostServices
         [SetUp]
         public void Setup()
         {
-            _context = new ServiceTestContext(new PostServiceSeeder());
-            new SeedService(_context).Seed();//TODO: Automatizar
+            _context = new ServiceTestContext(new PostServiceSeeder(true));
         }
 
         [TearDown]

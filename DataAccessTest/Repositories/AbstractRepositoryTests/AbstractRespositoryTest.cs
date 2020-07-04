@@ -14,8 +14,7 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccessTestContext(new BaseRepositorySeeder());
-            new SeedRepository(_context).Seed(); //TODO: Automatizar
+            _context = new DataAccessTestContext(new BaseRepositorySeeder(true));
         }
 
         #region GatAll tests

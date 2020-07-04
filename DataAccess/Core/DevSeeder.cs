@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace DataAccess.Core
 {
-    public class DevSeeder: ISeeder
+    public class DevSeeder: BaseSeeder, ISeeder
     {
-        public void Seed(BaseContext context)
+        public DevSeeder(bool transient):base(transient) { }
+
+        public override void Seed(BaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.631298, Lon = -58.695334 };

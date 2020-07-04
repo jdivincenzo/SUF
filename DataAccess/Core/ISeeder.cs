@@ -3,5 +3,6 @@
     public interface ISeeder
     {
         public void Seed(BaseContext ctx);
+        public bool Transient();
     }
 }

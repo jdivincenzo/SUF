@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 namespace DataAccessTest.Repositories.AbstractRepositoryTests
 {
-    public class BaseRepositorySeeder : ISeeder
+    public class BaseRepositorySeeder : BaseSeeder, ISeeder
     {
-        public void Seed(BaseContext context)
+        public BaseRepositorySeeder(bool transient) : base(transient) { }
+
+        public override void Seed(BaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.629405, Lon=-58.691752 };

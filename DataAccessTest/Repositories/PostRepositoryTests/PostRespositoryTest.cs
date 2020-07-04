@@ -14,8 +14,7 @@ namespace DataAccessTest.Repositories.PostRepositoryTests
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccessTestContext(new PostRepositorySeeder());
-            new SeedRepository(_context).Seed();//TODO: Automatizar
+            _context = new DataAccessTestContext(new PostRepositorySeeder(true));
         }
 
         #region GetNearbyPosts tests
