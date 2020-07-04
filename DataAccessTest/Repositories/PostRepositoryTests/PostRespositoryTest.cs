@@ -14,7 +14,7 @@ namespace DataAccessTest.Repositories.PostRepositoryTests
         [SetUp]
         public void Setup()
         {
-            _context = new DataAccessTestContext(new PostRepositorySeeder(true));
+            _context = new DataAccessTestContext(new PostRepositorySeeder());
         }
 
         #region GetNearbyPosts tests

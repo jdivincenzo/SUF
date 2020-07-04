@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Model\Model.csproj" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\Setup\" />
+  </ItemGroup>
+
 </Project>

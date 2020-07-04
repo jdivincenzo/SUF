@@ -5,7 +5,7 @@ namespace DataAccess.Core
 {
     public class DevSeeder: BaseSeeder, ISeeder
     {
-        public DevSeeder(bool transient):base(transient) { }
+        public DevSeeder():base(false) { }
 
         public override void Seed(BaseContext context)
         {

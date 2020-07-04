@@ -17,7 +17,7 @@ namespace ServicesTest.Services.PostServices
         [SetUp]
         public void Setup()
         {
-            _context = new ServiceTestContext(new PostServiceSeeder(true));
+            _context = new ServiceTestContext(new PostServiceSeeder());
         }
 
         [TearDown]

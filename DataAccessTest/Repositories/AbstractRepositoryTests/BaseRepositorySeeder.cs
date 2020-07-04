@@ -6,7 +6,7 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
 {
     public class BaseRepositorySeeder : BaseSeeder, ISeeder
     {
-        public BaseRepositorySeeder(bool transient) : base(transient) { }
+        public BaseRepositorySeeder() : base(true) { }
 
         public override void Seed(BaseContext context)
         {

@@ -26,7 +26,7 @@ namespace Services.AbstractService
 
         internal DataAccess.Core.BaseContext NewContext()
         {
-            if (_context == null) return new DataAccess.Core.DevContext(new DevSeeder(false));
+            if (_context == null) return new DataAccess.Core.DevContext(new DevSeeder());
             return _context;
         }
 

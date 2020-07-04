@@ -6,7 +6,7 @@ namespace DataAccess.Core
 {
     public class BaseContext : DbContext
     {
-        private bool _seeded = false;
+        private static bool _seeded = false;
 
         public BaseContext(ISeeder seeder) : base()
         {
@@ -22,7 +22,7 @@ namespace DataAccess.Core
 
         public void Seed(ISeeder seeder)
         {
-            if (!_seeded && seeder.Transient())
+            if (!_seeded || seeder.Transient())
             {
                 CleanContext();
                 seeder.Seed(this);

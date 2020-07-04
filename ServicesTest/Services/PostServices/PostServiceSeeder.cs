@@ -6,7 +6,7 @@ namespace ServicesTest.Services.PostServices
 {
     public class PostServiceSeeder : BaseSeeder, ISeeder
     {
-        public PostServiceSeeder(bool transient) : base(transient) { }
+        public PostServiceSeeder() : base(true) { }
 
         public override void Seed(BaseContext context)
         {
