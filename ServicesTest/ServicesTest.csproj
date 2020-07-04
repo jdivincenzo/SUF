@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" PrivateAssets="All" />
     <ProjectReference Include="..\Model\Model.csproj" PrivateAssets="All" />
     <ProjectReference Include="..\Services\Services.csproj" PrivateAssets="All" />
   </ItemGroup>
