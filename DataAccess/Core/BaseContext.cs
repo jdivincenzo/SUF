@@ -1,18 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model.Entities;
 using System;
-using System.Data.Common;
 
 namespace DataAccess.Core
 {
     public class BaseContext : DbContext
     {
-        private ISeeder _seeder;
-
-        public BaseContext() : base()
-        {
-            this.Database.EnsureCreated();
-        }
+        private readonly ISeeder _seeder;
 
         public BaseContext(ISeeder seeder) : base()
         {

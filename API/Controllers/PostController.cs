@@ -1,15 +1,13 @@
 ﻿using API.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services.PostServices;
 using Services.PostServices.ExternalModel;
-using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace API.Controllers
 {

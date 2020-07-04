@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Model.Entities;
-using System;
+﻿using Model.Entities;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DataAccess.Core
 {
@@ -20,10 +17,12 @@ namespace DataAccess.Core
             posts.Add(post3);
             context.Posts.AddRange(posts);
 
-            IList<Picture> pictures = new List<Picture>();
-            pictures.Add(new Picture() { FileName = "Foto 1", Post = post1 });
-            pictures.Add(new Picture() { FileName = "Foto 2", Post = post2 });
-            pictures.Add(new Picture() { FileName = "Foto 3", Post = post3 });
+            IList<Picture> pictures = new List<Picture>
+            {
+                new Picture() { FileName = "Foto 1", Post = post1 },
+                new Picture() { FileName = "Foto 2", Post = post2 },
+                new Picture() { FileName = "Foto 3", Post = post3 }
+            };
             context.Pictures.AddRange(pictures);
 
             context.SaveChanges();

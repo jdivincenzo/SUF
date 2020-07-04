@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace DataAccess.Core
+﻿namespace DataAccess.Core
 {
     public interface ISeeder
     {

@@ -1,15 +1,12 @@
 ﻿using DataAccess.Core;
 using Services.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Services.AbstractService
 {
     public abstract class AbstractService
     {
-        private DataAccess.Core.BaseContext _context;
-        private IFileUtils _fileUtils;
+        private readonly DataAccess.Core.BaseContext _context;
+        private readonly IFileUtils _fileUtils;
 
         public AbstractService() 
         {

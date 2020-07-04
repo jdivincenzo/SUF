@@ -1,13 +1,12 @@
-using Model.Entities;
 using NUnit.Framework;
 using Services.PostServices;
-using System.Collections.Generic;
 using Services.PostServices.ExternalModel;
-using System.Linq;
-using System;
+using Services.Seed;
 using ServicesTest.Core;
 using ServicesTest.Fakes;
-using Services.Seed;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ServicesTest.Services.PostServices
 {

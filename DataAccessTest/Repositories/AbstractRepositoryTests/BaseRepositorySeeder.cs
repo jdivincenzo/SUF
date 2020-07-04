@@ -1,10 +1,9 @@
 ﻿using DataAccess.Core;
 using Model.Entities;
 using System.Collections.Generic;
-using System.Data.Entity;
 
 namespace DataAccessTest.Repositories.AbstractRepositoryTests
-{ 
+{
     public class BaseRepositorySeeder : ISeeder
     {
         public void Seed(BaseContext context)
@@ -17,10 +16,12 @@ namespace DataAccessTest.Repositories.AbstractRepositoryTests
             posts.Add(post2);
             context.Posts.AddRange(posts);
 
-            IList<Picture> pictures = new List<Picture>();
-            pictures.Add(new Picture() { FileName = "Foto 1", Post = post1 });
-            pictures.Add(new Picture() { FileName = "Foto 2", Post = post2 });
-            pictures.Add(new Picture() { FileName = "Foto 3", Post = post2 });
+            IList<Picture> pictures = new List<Picture>
+            {
+                new Picture() { FileName = "Foto 1", Post = post1 },
+                new Picture() { FileName = "Foto 2", Post = post2 },
+                new Picture() { FileName = "Foto 3", Post = post2 }
+            };
             context.Pictures.AddRange(pictures);
 
             context.SaveChanges();

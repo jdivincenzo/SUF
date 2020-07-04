@@ -1,13 +1,5 @@
-﻿using DataAccess.Core;
-using DataAccess.Repositories;
-using Model.Entities;
+﻿using DataAccess.Repositories;
 using Services.Common;
-using Services.PostServices.ExternalModel;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace Services.Seed
 {
@@ -22,10 +14,8 @@ namespace Services.Seed
 
         public void Seed()
         {
-            using (var ctx = NewContext())
-            {
-                new SeedRepository(ctx).Seed();
-            }
+            using var ctx = NewContext();
+            new SeedRepository(ctx).Seed();
         }
     }
 }

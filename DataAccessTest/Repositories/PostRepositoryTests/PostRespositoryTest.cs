@@ -2,7 +2,6 @@ using DataAccess.Repositories;
 using DataAccessTest.Core;
 using Model.Entities;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
