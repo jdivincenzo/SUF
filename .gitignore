@@ -2,11 +2,9 @@ Services/bin/
 Services/obj/
 Model/obj/
 DataAccess/obj/
-APITest/obj/
 DataAccess/bin/
 Model/bin/
 packages/
-APITest/bin/
 .vs/
 Common/bin/
 Common/obj/
@@ -17,8 +15,6 @@ DataAccessTest/obj/
 ServicesTest/bin/
 ServicesTest/obj/project.assets.json
 ServicesTest/obj/
-API/obj/
-API/bin/
 SPA/jQuery/
 SPA/OpenLayers-2.13.1/.gitignore
 SPA/OpenLayers-2.13.1/
