@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Model.Entities;
 using System;
 
 namespace DataAccess.Core
 {
-    public class BaseContext : DbContext
+    public class BaseContext : DbContext, IBaseContext
     {
         private static bool _seeded = false;
 
@@ -62,5 +63,10 @@ namespace DataAccess.Core
 
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Post> Posts { get; set; }
+
+        public DatabaseFacade GetDatabase()
+        {
+            return this.Database;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace ServicesTest.Services.PostServices
     {
         public PostServiceSeeder() : base(true) { }
 
-        public override void Seed(BaseContext context)
+        public override void Seed(IBaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.629405, Lon=-58.691752 };

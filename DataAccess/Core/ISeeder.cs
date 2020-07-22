@@ -2,7 +2,7 @@
 {
     public interface ISeeder
     {
-        public void Seed(BaseContext ctx);
+        public void Seed(IBaseContext ctx);
         public bool Transient();
     }
 }

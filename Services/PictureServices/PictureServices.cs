@@ -4,7 +4,7 @@
     {
         #region constructors
         public PictureServices() : base() { }
-        public PictureServices(DataAccess.Core.BaseContext context) : base(context) { }
+        public PictureServices(DataAccess.Core.IBaseContext context) : base(context) { }
 
         #endregion
 

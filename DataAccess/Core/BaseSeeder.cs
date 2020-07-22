@@ -12,7 +12,7 @@ namespace DataAccess.Core
             _transient = transient;
         }
 
-        public abstract void Seed(BaseContext context);
+        public abstract void Seed(IBaseContext context);
 
         public bool Transient()
         {

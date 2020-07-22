@@ -8,7 +8,7 @@ namespace DataAccess.Core
     {
         public DevSeeder():base(false) { }
 
-        public override void Seed(BaseContext context)
+        public override void Seed(IBaseContext context)
         {
             IList<Post> posts = new List<Post>();
             Post post1 = new Post() { Lat = -34.631298, Lon = -58.695334 };
@@ -33,10 +33,10 @@ namespace DataAccess.Core
             CreateFunctions(context);
         }
 
-        private void CreateFunctions(BaseContext context)
+        private void CreateFunctions(IBaseContext context)
         { 
-            context.Database.ExecuteSqlRaw("DROP FUNCTION IF EXISTS CalculateDistance;");
-            context.Database.ExecuteSqlRaw(@"CREATE FUNCTION CalculateDistance
+            context.GetDatabase().ExecuteSqlRaw("DROP FUNCTION IF EXISTS CalculateDistance;");
+            context.GetDatabase().ExecuteSqlRaw(@"CREATE FUNCTION CalculateDistance
                                                 (
                                                     @Lat1 FLOAT,
                                                     @Lon1 FLOAT,

@@ -9,7 +9,7 @@ namespace DataAccessTest.Repositories.PostRepositoryTests
 {
     public class AbstractRespositoryTest
     {
-        private DataAccess.Core.BaseContext _context;
+        private DataAccess.Core.IBaseContext _context;
 
         [SetUp]
         public void Setup()
