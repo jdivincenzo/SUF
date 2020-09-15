@@ -1,5 +1,8 @@
 ﻿using DataAccess.Core;
 using Services.Common;
+using System;
+using System.Reflection;
+using System.Linq;
 
 namespace Services.AbstractService
 {
@@ -7,6 +10,16 @@ namespace Services.AbstractService
     {
         private readonly DataAccess.Core.IBaseContext _context;
         private readonly IFileUtils _fileUtils;
+
+
+        public T GetRepository<T>(IBaseContext c) {
+            var AllTypesOfIRepository = from x in Assembly.GetAssembly(typeof(T)).GetTypes()
+                                        where
+                                        x.GetInterfaces().Contains(typeof(T))
+                                        select x;
+            var o = Activator.CreateInstance(AllTypesOfIRepository.First(), c);
+            return (T)o;
+        }
 
         public AbstractService() 
         {
