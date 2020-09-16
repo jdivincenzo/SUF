@@ -15,8 +15,8 @@
         {
             "name": "Launch Firefox against localhost",
             "type": "firefox",
-            "request": "launch",
             "reAttach": true,
+            "request": "launch",
             "url": "http://localhost:5000/api/post/GetNearbyPosts?lat=-34.629835&lon=-58.694141&dist=10",
             "webRoot": "${workspaceFolder}"
         }
