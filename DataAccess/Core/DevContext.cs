@@ -11,7 +11,8 @@ namespace DataAccess.Core
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost\sqlexpress;Database=Dev;Integrated Security=True");
+            // optionsBuilder.UseSqlServer(@"Server=localhost\sqlexpress;Database=Dev;Integrated Security=True"); //windows
+            optionsBuilder.UseSqlServer(@"Server=localhost;Database=Dev;User id=sa;Password=jdvSqlserver1;"); //linux
         }
     }
 }
