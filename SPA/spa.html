@@ -34,7 +34,8 @@
     <div id="postsMap"></div>
     <script>
     	function consultar() {
-	  		var api_url = 'https://localhost:44310/api/post/GetNearbyPosts?lat=-34.629835&lon=-58.694141&dist=10'
+			  //var api_url = 'https://localhost:44310/api/post/GetNearbyPosts?lat=-34.629835&lon=-58.694141&dist=10' //windows
+			  var api_url = 'https://localhost:5001/api/post/GetNearbyPosts?lat=-34.629835&lon=-58.694141&dist=10'
 	    	$.ajax({
 	        	url: api_url,
 	        	contentType: "application/json",
